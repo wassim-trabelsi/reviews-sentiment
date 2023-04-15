@@ -1,0 +1,6 @@
+nltk
+torch
+transformers
+FastAPI
+python-dotenv
+uvicorn
