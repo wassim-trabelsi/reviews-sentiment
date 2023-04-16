@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from extract_reviews import extract_reviews
-from process_reviews import process_reviews
-from load_reviews import load_reviews
+from app.extract_reviews import extract_reviews
+from app.process_reviews import process_reviews
+from app.load_reviews import load_reviews
 import uvicorn
 
 app = FastAPI()
@@ -16,11 +16,10 @@ async def root():
 
 # Allow get requests to the /sentiment-analysis endpoint
 @app.get("/sentiment-analysis")
-async def sentiment_analysis(movieID: int):
+def sentiment_analysis(movieID: int): 
     reviews   = extract_reviews(movieID)
     processed = process_reviews(reviews)
     # result    = load_reviews(processed)
-    print(processed)
     return {"result": processed}
 
 if __name__ == "__main__":
