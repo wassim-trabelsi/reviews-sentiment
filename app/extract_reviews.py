@@ -3,11 +3,10 @@ import requests
 import os
 
 # Get the API key from .env file
-dotenv_path = '../.env'
+dotenv_path = '.env'
 load_dotenv(dotenv_path)
 API_KEY = os.getenv('API_KEY')
 
-print(API_KEY)
 def extract_reviews(movie_id):
     reviews = []
     for page in range(1, 6):
